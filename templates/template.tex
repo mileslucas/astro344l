@@ -1,0 +1,107 @@
+\documentclass[%
+aip,
+jmp,
+reprint,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{listings}
+%\usepackage[style=phys]{biblatex}
+%\addbibresource{refs.bib}
+\usepackage{ gensymb }
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+\mathchardef\mhyphen="2D
+
+\renewcommand{\arraystretch}{1.3} % Changes the height of tables
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\parsec{pc}
+
+
+
+\begin{document}
+	
+	\title[Short title]{Title}
+	
+	\author{Lucas, Miles}
+	\author{Brandon, John}
+	\affiliation{Iowa State University}
+	
+	\date{30 August 2017}
+	
+	
+% Write here a short abstract (1 paragraph) describing what you achieved in this lab.
+
+	\begin{abstract}
+	
+		
+	\end{abstract}
+	
+	\maketitle
+%________________________________________________________________________
+	
+%	Write here a summary of the goals of this lab. Be brief – do not exceed the end of the first page.
+
+	\section{Introduction}
+	
+	
+%________________________________________________________________________	
+
+%	Describe your telescope and camera setup. For the first lab you should describe the setup in more details. Subsequent labs can refer to the procedure described in the first lab, and focus more on the data acquisition itself. Important details to write include: which stars have been observed, which filters were used (BVI), what exposure times and what calibration procedures have been followed (e.g., dark frames acquisition, photometric standards observed, etc.). Mention also the observing conditions (weather, moon presence, temperature, etc.). You should include the observing log appendix A (a table or a scan of a hardcopy). This section can be as long as necessary, but you should strive for brevity (you can refer to the lab guide to avoid repeating all steps, but make sure you explain anything you did differently, problems encountered, etc.). Use tables to summarize information clearly.
+
+	\section{Data Acquisition and Setup}
+	
+	
+%________________________________________________________________________
+
+%Describe what you did to analyze the data. For the first lab this section will be minimal. For subsequent labs you should describe in detail the steps you did to analyze the data.  If applicable you can attach the code you used to analyze the data in Appendix B (either a log of your IDL section, or the code of any scripts you wrote). You can also attach screenshots of your computer session if it helps your discussion. Include tables of raw data in this section. The goal of this section is to describe unambiguously what you did to derive your final images and measured quantities from the raw data. Again be brief but complete (use as much space as you need).
+	\section{Data Analysis}
+	
+
+
+%________________________________________________________________________
+	
+%	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
+	\section{Results}
+	 
+	
+%________________________________________________________________________
+	
+%	Add here anything else you want to say, and summarize your results. This section should be very brief, not more than a couple of paragraphs
+	\section{Conclusions}
+	
+	
+%________________________________________________________________________
+	
+	\section*{Acknowledgements}
+	
+	Thank you to Dr. Charles Kerton and Brandon Marshall for their guidance and assistance in this work.
+	
+%	\printbibliography
+	
+	
+%________________________________________________________________________
+	
+	\onecolumngrid
+	\appendix
+	\section{Observation Log}
+
+	\begin{table}[h!]
+		\centering
+		\label{table:log}
+		\input{log-template}
+	\end{table}
+%________________________________________________________________________
+	
+	\section{Analysis Scripts}
+	
+	
+\end{document}
+%
+% ****** End of file aipsamp.tex ******
