@@ -17,6 +17,20 @@ reprint,
 %\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
 \usepackage{subcaption}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+	frame=tb, 
+	language=Python, 
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{red},}
 
 \mathchardef\mhyphen="2D
 
@@ -128,7 +142,10 @@ reprint,
 	
 	\section{Analysis Scripts}
 	
+	File: lab2/src/measurements.py
+	\lstinputlisting{../src/measurements.py}
 	
+
 \end{document}
 %
 % ****** End of file aipsamp.tex ******
