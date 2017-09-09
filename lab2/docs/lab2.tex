@@ -16,6 +16,7 @@ reprint,
 \usepackage{ gensymb }
 %\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
+\usepackage{subcaption}
 
 \mathchardef\mhyphen="2D
 
@@ -66,6 +67,28 @@ reprint,
 
 %Describe what you did to analyze the data. For the first lab this section will be minimal. For subsequent labs you should describe in detail the steps you did to analyze the data.  If applicable you can attach the code you used to analyze the data in Appendix B (either a log of your IDL section, or the code of any scripts you wrote). You can also attach screenshots of your computer session if it helps your discussion. Include tables of raw data in this section. The goal of this section is to describe unambiguously what you did to derive your final images and measured quantities from the raw data. Again be brief but complete (use as much space as you need).
 	\section{Data Analysis}
+	
+	Our analysis included some simple image processing and then used machine learning to determine the pixel scale and field of view. 
+	
+	Our processing pipeline involved finding median dark frames for each exposure length and then subtracting the dark frames from each science image. We use median dark frames rather than mean because we wanted to avoid outliers in the form of cosmic rays or dark pulses. To create the median images, we used a python script that utilizes numpy's array operations for getting the median of the data arrays from each FITS file. Once we saved the three median dark frames (\SI{0.1}{\second}, \SI{0.5}{\second}, \SI{1.0}{\second}) we used AstroImageJ to automate the subtraction for the 26 science images. A comparison of the science images before and after subtraction is shown in \autoref{fig:comparison}. As you can see, the thermal excitation caused by the camera's electronics is removed. 
+	
+	To calculate the pixel scale of our image, we need to find the center of each star. 
+	
+	\begin{figure}[]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=.8\linewidth]{pre.png}
+			\caption{Raw science image}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=.8\linewidth]{post.png}
+			\caption{Processed science image}
+		\end{subfigure}
+		\caption{Comparison of the raw and processed science images of Albireo in photometric V at \SI{0.1}{\second} exposure.}
+		\label{fig:comparison}
+	\end{figure}
+	
 	
 
 
