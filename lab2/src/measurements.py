@@ -1,4 +1,5 @@
 from glob import glob
+import argparse
 
 import numpy as np
 from astropy.io import fits
@@ -15,9 +16,9 @@ def get_sep(img):
 
 def get_pscale(seps, dalpha):
     pscales = dalpha / np.array(seps)
-    pscale = np.mean(scales)
-    pscale_std = np.std(scales)
-    return pscale, std
+    pscale = np.mean(pscales)
+    pscale_std = np.std(pscales)
+    return pscale, pscale_std
 
 def get_fov(pscale, std, dalpha, leng):
     fov = leng * pscale
@@ -25,8 +26,11 @@ def get_fov(pscale, std, dalpha, leng):
     return fov, std
 
 if __name__ == '__main__':
-    filenames = glob('../data/science/processed/*V*tenth*')
-    imgs = [fits.getdata(file) for file in filenames]
+    parser = argparse.ArgumentParser('Gets measurements from fits files')
+    parser.add_argument('filename', help='files to process')
+    args = parser.parse_args()
+    filenames = glob(args.filename)
+    imgs = [fits.getdata(files) for files in filenames]
     seps = [get_sep(img) for img in imgs]
     dalpha = 35.3
     pscale = get_pscale(seps, dalpha)
