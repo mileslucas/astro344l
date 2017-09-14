@@ -3,7 +3,6 @@ aip,
 jmp,
 reprint,
 floatfix,
-nobibfootnote,
 ]{revtex4-1}
 
 \usepackage{graphicx}% Include figure files
@@ -68,7 +67,7 @@ nobibfootnote,
 	
 	To determine the pixel scale from an image, we must find the distance between the two sources. If we have two centroids and we allow $r$ to be magnitude of their separation, then the pixel scale will be
 	\begin{equation}
-		pixel\ scale = \frac{\Delta\alpha}{r}
+		pscale = \frac{\Delta\alpha}{r}
 		\label{eqn:pscale}
 	\end{equation}
 	and the field of view in one direction will be 
@@ -76,10 +75,14 @@ nobibfootnote,
 		FOV = N \frac{\Delta\alpha}{r}
 		\label{eqn:fov}
 	\end{equation}
-	where $N$ is the number of pixels in the given direction. Our uncertainty measure was made by deriving the least-squares propagation of the above equations. Below shows the derivation, which assumes that all of the errors are sampled from a standard distribution, which is appropriate for our images
+	where $N$ is the number of pixels in the given direction. Our uncertainty measure was made by deriving the least-squares propagation of \autoref{eqn:pscale} and \autoref{eqn:fov}. Below shows the derivation, which assumes that all of the errors are sampled from a normal distribution, which is appropriate for our images
+	\begin{equation}
+	\sigma_{pscale} = \frac{-\Delta\alpha}{r^2} \sigma_r
+	\label{egn:perror}
+	\end{equation}
 	\begin{equation}
 		\sigma_{FOV} = N \frac{-\Delta\alpha}{r^2} \sigma_r
-		\label{egn:error}
+		\label{egn:ferror}
 	\end{equation}
 	
 	We will also compare the images from each filter and exposure time using their statistical moments to analyze the differences in brightness.
@@ -134,7 +137,7 @@ nobibfootnote,
 	 
 	 The results of the DAOPHOT algorithm are shown in \autoref{table:dao}. The results of the script are shown in \autoref{table:results}. The mean, median, and standard deviation for each photometric filter and exposure time are listed in \autoref{table:stats}.
 	 
-	 \begin{table}[t]
+	 \begin{table}[]
 	 	\centering
 	 	\caption{Pixel scale and field of view values from the 10 photometric V \SI{0.1}{\second} exposures}
 	 	\begin{tabular*}{.7\linewidth}{@{\extracolsep{\fill}}c c}
@@ -147,7 +150,7 @@ nobibfootnote,
  		\label{table:results}
 	 \end{table}
  
-	 \begin{table}[t]
+	 \begin{table}[]
 	 	\centering
 	 	\caption{The statistics for each photometric filter at each exposure level}
 	 	\begin{tabular*}{0.8\linewidth}{@{\extracolsep{\fill}}c r r r r}
@@ -177,9 +180,7 @@ nobibfootnote,
 	
 	Thank you to Dr. Charles Kerton and Brandon Marshall for their guidance and assistance in this work.
 	
-	\section*{References}
-	
-%	\bibliography{refs}
+	\bibliography{refs}
 	
 	
 %________________________________________________________________________
