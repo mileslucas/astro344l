@@ -27,7 +27,7 @@ nobibfootnote,
 	frame=single, 
 	language=Python, 
 	columns=flexible,
-	basicstyle={\small\ttfamily},
+	basicstyle={\footnotesize\ttfamily},
 	keywordstyle=\color{blue},
 	commentstyle=\color{dkgreen},
 	stringstyle=\color{red},
@@ -66,17 +66,20 @@ nobibfootnote,
 	
 	This lab seeks to quantify the pixel scale and field of view of the images taken using the SBIG CCD camera and Meade 8" telescope at the Zaffarano Hall observation deck. To do t his we will take images of sources with a known angular separation. The source we used was Albireo ($\beta$ Cygni), a binary system in the northern sky. Albireo's coordinates are ($19^h30^m43.286^s$, \ang{+27;57;34.84}) with angular separation between the two stars $\Delta\alpha=\SI{35.3}{\arcsecond}$.
 	
-	To determine the pixel scale from an image, we must find the distance between the two sources. If we have two centroids and we allow $\vec{r}$ to be their separation, then the pixel scale will be
+	To determine the pixel scale from an image, we must find the distance between the two sources. If we have two centroids and we allow $r$ to be magnitude of their separation, then the pixel scale will be
 	\begin{equation}
-		pixel\ scale = \frac{\Delta\alpha}{||\vec{r}||}
+		pixel\ scale = \frac{\Delta\alpha}{r}
 		\label{eqn:pscale}
 	\end{equation}
 	and the field of view in one direction will be 
 	\begin{equation}
-		FOV = N \frac{\Delta\alpha}{||\vec{r}||}
+		FOV = N \frac{\Delta\alpha}{r}
 		\label{eqn:fov}
 	\end{equation}
-	where $N$ is the number of pixels in the given direction.
+	where $N$ is the number of pixels in the given direction. Our uncertainty measure was made by deriving the least-squares propagation of the above equations. Below shows the derivation, which assumes that all of the errors are sampled from a standard distribution, which is appropriate for our images
+	\begin{equation}
+		\sigma_{FOV} = N \frac{-\Delta\alpha}{r^2} \sigma_r
+	\end{equation}
 	
 	We will also compare the images from each filter and exposure time using their statistical moments to analyze the differences in brightness.
 	
