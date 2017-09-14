@@ -119,7 +119,7 @@ nobibfootnote,
 	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth]{figs/dao.png}
-		\caption{Results of the DAO algorithm on one of the photometric V \SI{0.1}{\second} exposure}
+		\caption{Image of the centroids calculated by the DAOPHOT algorithm on one of the photometric V \SI{0.1}{\second} exposure}
 		\label{fig:centroids}
 	\end{figure}
 
@@ -128,9 +128,9 @@ nobibfootnote,
 %	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
 	\section{Results}
 	 
-	 The results of the script are shown in \autoref{table:results}. The mean, median, and standard deviation for each photometric filter and exposure time are listed in \autoref{table:stats}.
+	 The results of the DAOPHOT algorithm are shown in \autoref{table:dao}. The results of the script are shown in \autoref{table:results}. The mean, median, and standard deviation for each photometric filter and exposure time are listed in \autoref{table:stats}.
 	 
-	 \begin{table}
+	 \begin{table}[t]
 	 	\centering
 	 	\caption{Pixel scale and field of view values from the 10 photometric V \SI{0.1}{\second} exposures}
 	 	\begin{tabular*}{.7\linewidth}{@{\extracolsep{\fill}}c c}
@@ -143,7 +143,7 @@ nobibfootnote,
  		\label{table:results}
 	 \end{table}
  
-	 \begin{table}
+	 \begin{table}[t]
 	 	\centering
 	 	\caption{The statistics for each photometric filter at each exposure level}
 	 	\begin{tabular*}{0.8\linewidth}{@{\extracolsep{\fill}}c r r r r}
@@ -175,24 +175,37 @@ nobibfootnote,
 	
 	\section*{References}
 	
-	\bibliography{refs}
+%	\bibliography{refs}
 	
 	
 %________________________________________________________________________
 	
 	\onecolumngrid
 	\appendix
+	
 	\section{Observation Log}
 	
 	\begin{table}[H]
 		\centering
-		\input{log}
+		\input{tables/log}
 		\label{table:log}
 	\end{table}
 %________________________________________________________________________
 	
 	\section{Analysis Scripts}
 	\lstinputlisting[label={lst:measurement}]{../src/measurements.py}
+	
+%________________________________________________________________________
+
+	\section{DAOStarFinder Results}
+	\begin{table}[H]
+		\centering
+		\caption{Table of the results from DAOStarFinder for each of the 10 photometric V \SI{0.1}{\second} exposures}
+		\input{tables/dao}
+		\label{table:dao}
+	\end{table}
+
+
 	
 
 \end{document}
