@@ -43,7 +43,7 @@ floatfix
 
 \begin{document}
 
-	\title[Short title]{Title}
+	\title[Photometry of M39]{Differential Photometry of M39}
 
 	\author{Lucas, Miles}
 	\author{Brandon, John}
@@ -82,7 +82,11 @@ floatfix
 
 %Describe what you did to analyze the data. For the first lab this section will be minimal. For subsequent labs you should describe in detail the steps you did to analyze the data.  If applicable you can attach the code you used to analyze the data in Appendix B (either a log of your IDL section, or the code of any scripts you wrote). You can also attach screenshots of your computer session if it helps your discussion. Include tables of raw data in this section. The goal of this section is to describe unambiguously what you did to derive your final images and measured quantities from the raw data. Again be brief but complete (use as much space as you need).
 	\section{Data Analysis}
-
+	Our data analysis involved preparing our science images and performing differential photometry on them. To prepare our images we created a median dark frame in AstroImageJ for our only exposure time, \SI{13}{\second}. We then subtracted this frame from each science image to filter out systematic noise from our CCD. These images were then grouped into two stacks, one for each photometric filter.
+	
+	We used AstroImageJ to process each stack for the differential photometry. For use in the differential photometry algorithm we use the CCD reported electronic gain of \SI{1.49}{\elementarycharge\per{ADU}}. AstroImageJ processes the stack of images in a way that allows for quick calculations. An aperture can be placed on each star of interest in an image and AstroImageJ allows placing target stars and reference stars, where the reference stars have predetermined magnitudes.
+	
+	After placing the apertures for one image in the stack we move forward in the stack and by choosing the same initial aperture AstroImageJ will place the remaining apertures automatically. After each aperture has been placed on each image in the stack and the reference star magnitudes have been set, AstroImageJ will do the photometry and creates a measurement table with the results. This table is shown with the relevant information in \autoref{table:fullres}. This table shows results for target and reference stars and their names are shown in \autoref{fig:map} with reference to the object names of M39.
 
 
 %________________________________________________________________________
@@ -90,6 +94,21 @@ floatfix
 %	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
 	\section{Results}
 
+	The table of the results from AstroImageJ are in \autoref{table:fullres} and the results calculated using \autoref{eqn:wa} and \autoref{eqn:ws} are in \autoref{table:phot}. 
+
+	\begin{table}
+		\centering
+		\caption{Photometry Results}
+		\begin{tabular*}{0.6\linewidth}{@{\extracolsep{\fill}}rrr}
+			\hline
+			Object &                 V Mag  &                 B Mag  \\ \hline\hline
+			    x1 & \SI{7.7707\pm0.0039}{} & \SI{7.8078\pm0.0018}{} \\
+			    x4 &                     NA &                     NA \\
+			    x7 & \SI{9.3294\pm0.0045}{} &  \SI{9.473\pm0.0042}{} \\
+			    x9 & \SI{9.9790\pm0.0035}{} &  \SI{10.233\pm0.011}{} \\ \hline
+		\end{tabular*}
+		\label{table:phot}
+	\end{table}
 
 %________________________________________________________________________
 
@@ -99,7 +118,7 @@ floatfix
 
 %________________________________________________________________________
 
-	\section*{Acknowledgements}
+	\section*{Acknowledgments}
 
 	Thank you to Dr. Charles Kerton and Brandon Marshall for their guidance and assistance in this work.
 
@@ -119,7 +138,13 @@ floatfix
 	\end{table}
 %________________________________________________________________________
 
-	\section{Analysis Scripts}
+	\section{Photometry Results}
+	
+	\begin{table}[h!]
+		\centering
+%		\input{results}
+		\label{table:fullres}
+	\end{table}
 
 
 \end{document}
