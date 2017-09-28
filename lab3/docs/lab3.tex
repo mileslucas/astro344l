@@ -113,7 +113,7 @@ floatfix
 %	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
 	\section{Results}
 
-	The table of the results from AstroImageJ are in \autoref{table:fullres} and the results calculated using \autoref{eqn:wa} and \autoref{eqn:ws} are in \autoref{table:phot}. 
+	The table of the results from AstroImageJ are in \autoref{sec:res} and the results calculated using \autoref{eqn:wa} and \autoref{eqn:ws} are in \autoref{table:phot}. 
 
 	\begin{table}
 		\centering
@@ -121,9 +121,9 @@ floatfix
 		\begin{tabular*}{0.9\linewidth}{@{\extracolsep{\fill}}rlrr}
 			\hline
 			Object & Name       &                  V Mag &                  B Mag \\ \hline\hline
-			    T1 & BD+47 3447 & \SI{9.9790\pm0.0035}{} &  \SI{10.233\pm0.011}{} \\
-			    T2 & HD 205085  & \SI{7.7707\pm0.0039}{} & \SI{7.8078\pm0.0018}{} \\
-			    T3 & BD+47 3453 & \SI{9.3294\pm0.0045}{} &  \SI{9.473\pm0.0042}{} \\
+			    T1 & BD+47 3447 &  \SI{10.189\pm0.019}{} &  \SI{10.394\pm0.056}{} \\
+			    T2 & HD 205085  & \SI{7.9696\pm0.0075}{} & \SI{8.0264\pm0.0016}{} \\
+			    T3 & BD+47 3453 &    \SI{9.540\pm.010}{} &   \SI{9.669\pm0.024}{} \\
 			    T4 & BD+47 3458 &                     NA &                     NA \\ \hline
 		\end{tabular*}
 		\label{table:phot}
@@ -157,12 +157,18 @@ floatfix
 	\end{table}
 %________________________________________________________________________
 
-	\section{Photometry Results}
+	\section{Photometry Results} \label{sec:res}
 	
 	\begin{table}[h!]
 		\centering
-		\input{tables/results}
-		\label{table:fullres}
+		\input{tables/resultsV}
+		\label{table:fullresv}
+	\end{table}
+
+	\begin{table}[h!]
+		\centering
+		\input{tables/resultsB}
+		\label{table:fullresb}
 	\end{table}
 
 
