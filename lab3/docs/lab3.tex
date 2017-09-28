@@ -66,7 +66,33 @@ floatfix
 
 	\section{Introduction}
 
-	This lab seeks to determine the V and B magnitudes of four of the objects in M39, an open galactic cluster. M39 contains around 30 stars of various brightness and is about \ang{9} from Deneb ($\alpha$ Cyg).
+	This lab seeks to determine the V and B magnitudes of four of the objects in M39, an open galactic cluster. M39 contains around 30 stars of various brightness and is about \ang{9} from Deneb ($\alpha$ Cyg). 
+	
+	To determine the magnitudes of some of the objects in M39, we used differential photometry. This process uses the simplicity of comparing two objects taken in the same image, through the same filter, through the same optical path, and exposed for the same amount of time to determine
+	\begin{equation}
+		m_{tar} = m_{ref} + m_{diff}
+		\label{eqn:diff}
+	\end{equation}
+	
+	The way an imaging program does this is by determining the instrumental magnitudes and then comparing them to the reference magnitudes. 
+	\begin{equation}
+	 	m_{inst} = -2.5 \log_{10}(S-B)
+	 	\label{eqn:inst}
+	\end{equation}
+	where $S$ is the sum of all the pixel values in a given aperture and $B$ is the sum of all the pixel values of some background section, usually an annulus. The way AstroImageJ calculates these sums is dependent on more complex equations that parameterize the electron gain of the CCD and can do more image processing prior to integrating the pixel values. These extra parameters allow for determining the error of the instrumental magnitude.
+	
+	After the instrumental magnitude of a reference star is found, we can determine the magnitude correction value by combining \autoref{eqn:diff} and \autoref{eqn:inst}.
+	
+	\begin{equation}
+		m_{corr} = m_{ref} - m_{inst}
+		\label{eqn:corrected}
+	\end{equation}
+	and finally we can find the magnitude of any target star with 
+	\begin{equation}
+		m_{tar} = m_{inst} + m_{corr}
+		\label{eqn:final}
+	\end{equation}
+	
 
 %________________________________________________________________________
 
@@ -94,7 +120,7 @@ floatfix
 	
 	We used AstroImageJ to process each stack for the differential photometry. For use in the differential photometry algorithm we use the CCD reported electronic gain of \SI{1.49}{\elementarycharge\per{ADU}}. AstroImageJ processes the stack of images in a way that allows for quick calculations. An aperture can be placed on each star of interest in an image and AstroImageJ allows placing target stars and reference stars, where the reference stars have predetermined magnitudes.
 	
-	After placing the apertures for one image in the stack we move forward in the stack and by choosing the same initial aperture AstroImageJ will place the remaining apertures automatically. The reference magnitudes are shown in \autoref{table:ref}. After each aperture has been placed on each image in the stack and the reference star magnitudes have been set, AstroImageJ will do the photometry and creates a measurement table with the results. The full results are shown in \autoref{table:fullres}. This table shows results for target and reference stars shown in \autoref{fig:map}.
+	After placing the apertures for one image in the stack we move forward in the stack and by choosing the same initial aperture AstroImageJ will place the remaining apertures automatically. The reference magnitudes are shown in \autoref{table:ref}. After each aperture has been placed on each image in the stack and the reference star magnitudes have been set, AstroImageJ will do the photometry and creates a measurement table with the results. The full results are shown in \autoref{sec:results}. This table shows results for target and reference stars shown in \autoref{fig:map}.
 
 	\begin{table}
 		\centering
