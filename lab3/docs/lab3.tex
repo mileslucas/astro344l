@@ -55,7 +55,7 @@ floatfix
 % Write here a short abstract (1 paragraph) describing what you achieved in this lab.
 
 	\begin{abstract}
-
+	We used differential photometry to determine magnitudes of four objects in M39 using two foreground stars as references. We could only process three of the objects of interest due to poor image data for the other objects. The magnitudes were as follows: BD+47 3447, V=\SI{10.189\pm0.019}{}, B=\SI{10.394\pm0.056}{}, HD 205085  V=\SI{7.9696\pm0.0075}{} B=\SI{8.0264\pm0.0016}{}, and BD+47 3453, V=\SI{9.540\pm.010}{}, B=\SI{9.669\pm0.024}{}. The reference stars we used were BD+47 3454, V=\SI{8.917}{}, B=\SI{9.028}{} and HD 205073, V=\SI{7.845}{}, B=\SI{7.870}{}. Our magnitudes agree with other papers on M39 and our precision is around one-hundredth of a magnitude. We noted our brighter stars have less error, generally.
 
 	\end{abstract}
 
@@ -66,9 +66,9 @@ floatfix
 
 	\section{Introduction}
 
-	This lab seeks to determine the V and B magnitudes of four of the objects in M39, an open galactic cluster. M39 contains around 30 stars of various brightness and is about \ang{9} from Deneb ($\alpha$ Cyg). 
+	This lab seeks to determine the V and B magnitudes of four objects in M39, an open galactic cluster. M39 contains around 30 stars of various brightness and is about \ang{9} from Deneb ($\alpha$ Cyg). 
 	
-	To determine the magnitudes of some of the objects in M39, we used differential photometry. This process uses the simplicity of comparing two objects taken in the same image, through the same filter, through the same optical path, and exposed for the same amount of time to determine
+	To determine the magnitudes of our objects, we used differential photometry. This process uses the simplicity of having two objects taken in the same image, through the same filter, through the same optical path, and exposed for the same amount of time to determine
 	\begin{equation}
 		m_{tar} = m_{ref} + m_{diff}
 		\label{eqn:diff}
@@ -93,19 +93,29 @@ floatfix
 		\label{eqn:final}
 	\end{equation}
 	
+	We used a weigthed average and standard deviation to report our numbers, with weight equal to the inverse error squared.
+	\begin{equation}
+	 	\bar{x}_w = \frac{\sum_i{x_i/\sigma_i^2}}{\sum_i{1/\sigma_i^2}}
+	 	\label{eqn:wa}
+	\end{equation}
+	\begin{equation}
+	\sigma_w = \sqrt{\frac{1}{n-1} \sum{(x_i -\bar{x}_w)^2}}
+	\label{eqn:ws}
+	\end{equation}
+	
 
 %________________________________________________________________________
 
 %	Describe your telescope and camera setup. For the first lab you should describe the setup in more details. Subsequent labs can refer to the procedure described in the first lab, and focus more on the data acquisition itself. Important details to write include: which stars have been observed, which filters were used (BVI), what exposure times and what calibration procedures have been followed (e.g., dark frames acquisition, photometric standards observed, etc.). Mention also the observing conditions (weather, moon presence, temperature, etc.). You should include the observing log appendix A (a table or a scan of a hardcopy). This section can be as long as necessary, but you should strive for brevity (you can refer to the lab guide to avoid repeating all steps, but make sure you explain anything you did differently, problems encountered, etc.). Use tables to summarize information clearly.
 
 	\section{Data Acquisition and Setup}
-	Observations were made on \date{06 September 2017} at the Zaffarano Hall observation deck in Ames, Iowa. The night was mostly clear and the ambient temperature was around \SI{12}{\degreeCelsius}. The moon was full that night which caused higher than usual lunar presence. Observations were made using a Meade 8" reflector telescope with an SBIG ST-402ME CCD camera with internal V, B, and I filters. 
+	Observations were made on \date{06 September 2017} at the Zaffarano Hall observation deck in Ames, Iowa (\ang{-93.64734}, \ang{42.02996}, \SI{342}{\meter}). The night was mostly clear and the ambient temperature was around \SI{12}{\degreeCelsius}. The moon was full that night which caused higher than usual lunar presence. Observations were made using a Meade 8" reflector telescope with an SBIG ST-402ME CCD camera with internal V, B, and I filters. 
 	
 	Setting up the telescope was the same as previous observations made with the 8" Meade telescope at Zaffarano Hall. An obstacle we faced with alignment and slewing was the misalignment of our sight by a significant amount. To combat this, we shined a laser through the eyepiece to roughly show the target of the main mirror.
 	
-	We took 15 frames of data at \SI{13}{\second} at two locations in the sky. Of those 15, 5 were with photometric V, 5 were with photometric B, and 5 were dark frames. The first target contained two M39 objects (BD+47 3452 and HD 205172), however this data was deleted by accident and was not used for analysis. The second target contained objects BD+47 3447, HD 205085, BD+47 3453, and BD+47 3458, all of which are recorded in \autoref{table:log}. Of these images, another issue we encountered was centering the images as the telescope shifted according to its tracking movements. Because of this, a few of the images do not contain a clear view of M39 BD+47 3458.
+	We took 15 frames of data at \SI{13}{\second} at two locations in the sky. Of those 15, 5 were with photometric V, 5 were with photometric B, and 5 were dark frames. The first target contained two M39 objects (BD+47 3452 and HD 205172), however this data was deleted by accident and was not used for analysis. The second target contained objects BD+47 3447, HD 205085, BD+47 3453, and BD+47 3458, all of which are recorded in \autoref{table:log}. Of these images, another issue we encountered was centering the images as the telescope shifted according to its tracking movements. Because of this, a few of the images do not contain a clear view of BD+47 3458.
 	
-	\begin{figure}
+	\begin{figure}[]
 		\includegraphics[width=\linewidth]{figs/M39_map.png}
 		\caption{Map showing the celestial direction, target stars, and reference stars. The names of the objects above are in \autoref{table:phot}.}
 		\label{fig:map}
@@ -118,11 +128,11 @@ floatfix
 	\section{Data Analysis}
 	Our data analysis involved preparing our science images and performing differential photometry on them. To prepare our images we created a median dark frame in AstroImageJ for our only exposure time, \SI{13}{\second}. We then subtracted this frame from each science image to filter out systematic noise from our CCD. These images were then grouped into two stacks, one for each photometric filter.
 	
-	We used AstroImageJ to process each stack for the differential photometry. For use in the differential photometry algorithm we use the CCD reported electronic gain of \SI{1.49}{\elementarycharge\per{ADU}}. AstroImageJ processes the stack of images in a way that allows for quick calculations. An aperture can be placed on each star of interest in an image and AstroImageJ allows placing target stars and reference stars, where the reference stars have predetermined magnitudes.
+	We used AstroImageJ to process each stack using multi-aperture photometry. Our reported electronic gain was \SI{1.49}{\elementarycharge\per{ADU}}. AstroImageJ processes the stack of images in a way that allows for quick aperture placement. An aperture can be placed on each star of interest in an image and AstroImageJ allows placing target stars and reference stars, where the reference stars have predetermined magnitudes.
 	
-	After placing the apertures for one image in the stack we move forward in the stack and by choosing the same initial aperture AstroImageJ will place the remaining apertures automatically. The reference magnitudes are shown in \autoref{table:ref}. After each aperture has been placed on each image in the stack and the reference star magnitudes have been set, AstroImageJ will do the photometry and creates a measurement table with the results. The full results are shown in \autoref{sec:results}. This table shows results for target and reference stars shown in \autoref{fig:map}.
+	After placing the apertures for one image in the stack we move forward in the stack and by choosing the same initial aperture AstroImageJ will place the remaining apertures automatically. The reference magnitudes are shown in \autoref{table:ref}. After each aperture has been placed on each image in the stack and the reference star magnitudes have been set, AstroImageJ will do the photometry and creates a measurement table with the results. The full results are shown in \autoref{sec:res}. The skymap for the target and reference stars is shown in \autoref{fig:map}.
 
-	\begin{table}
+	\begin{table}[ht]
 		\centering
 		\caption{Reference Stars}
 		\begin{tabular*}{0.7\linewidth}{@{\extracolsep{\fill}}rlrr}
@@ -139,9 +149,9 @@ floatfix
 %	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
 	\section{Results}
 
-	The table of the results from AstroImageJ are in \autoref{sec:res} and the results calculated using \autoref{eqn:wa} and \autoref{eqn:ws} are in \autoref{table:phot}. 
+	The table of the results from AstroImageJ are in \autoref{sec:res} and the results calculated using \autoref{eqn:wa} and \autoref{eqn:ws} are in \autoref{table:phot}. We do not report a magnitude for BD+47 3458 because of issues with the photometry. The star had drifted out of frame for some of the images and therefore the instrumental magnitude was not correct. Also, the star moved due to telescope drift and the amount of the star cut off was inconsistent which caused a large variance in the pixel value counts. 
 
-	\begin{table}
+	\begin{table}[ht]
 		\centering
 		\caption{Photometry Results}
 		\begin{tabular*}{0.9\linewidth}{@{\extracolsep{\fill}}rlrr}
@@ -159,7 +169,8 @@ floatfix
 
 %	Add here anything else you want to say, and summarize your results. This section should be very brief, not more than a couple of paragraphs
 	\section{Conclusions}
-
+	
+	Although we encountered issues with framing the images and accidentally deleting half of our data, we are satisfied with the results of the differential photometry. A quick comparison to the magnitudes reported by other papers shows that we are mostly accurate and our process was effective given our equipment. The precision of our photometry as also reasonable. We are happy to see that we can generally be precise to the hundredth of a magnitude. We also noted that the brighter the object the less error we had.
 
 %________________________________________________________________________
 
@@ -176,7 +187,7 @@ floatfix
 	\appendix
 	\section{Observation Log}
 
-	\begin{table}[h!]
+	\begin{table}[H]
 		\centering
 		\input{tables/log}
 		\label{table:log}
@@ -185,13 +196,13 @@ floatfix
 
 	\section{Photometry Results} \label{sec:res}
 	
-	\begin{table}[h!]
+	\begin{table}[H]
 		\centering
 		\input{tables/resultsV}
 		\label{table:fullresv}
 	\end{table}
 
-	\begin{table}[h!]
+	\begin{table}[H]
 		\centering
 		\input{tables/resultsB}
 		\label{table:fullresb}
