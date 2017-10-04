@@ -4,6 +4,7 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{dcolumn}
+\usepackage{subcaption}
 
 \DeclareSIUnit\day{d}
 
@@ -24,38 +25,19 @@
 	
 	\autoref{fig:staralt} shows that we will be able to see the star and have a reasonable airmass over this time period. Mid October shows promise for observations. Our most preferred date is \date{18 October 2017} due to the new moon. Our star is fairly distant from the moon, thankfully, so we do not have issues even if the moon is up, so other weeks work well, too. \autoref{tab:info} contains info about the star of interest and the reference stars for the differential photometry.
 	
-	\begin{table}[p]
-		\centering
-		\caption{Information about target and reference stars}
-		\begin{tabular}{rrrrrr}
-			\hline
-			   Object & Type &            RA &                DEC &                      V &                        Ref \\ \hline\hline
-			   Dq Cep &  *dS & 20 57 48.6082 & \ang{55;29;15.602} & \SIrange{7.40}{7.48}{} & \cite{1971GCVS3.C......0K} \\
-			HD 235411 &    * & 20 57 31.1094 & \ang{55;31;38.697} &     \SI{9.76\pm0.03}{} &  \cite{2000AA...355L..27H} \\
-			HD 200017 &    * & 20 58 27.2026 & \ang{55;39;00.459} &     \SI{8.20\pm0.01}{} &  \cite{2000AA...355L..27H} \\ \hline
-		\end{tabular}
-		\label{tab:info}
-	\end{table}
-	
-	
-	\begin{figure}[p]
-		\includegraphics[width=\linewidth]{figs/staralt.png}
-		\caption{Output from Peter Sorensen's Object Visibility applet. Peek is around 20:00:00 CST and is still sufficiently high four hours later at 24:00:00 CST}
-		\label{fig:staralt}
-	\end{figure}
 
 \section{Scientific Justification}
 
+
 \section{Technical Justification}
 
-	Previous experiments done using the same telescope and SBIG CCD have shown that differential photometry can be accurate to around \SI{0.01}{mag}. Because our expected magnitude range is \SI{0.08}{mag} we wanted to be sure a difference could be seen. To showcase the precision we have already taken a preliminary dataset that shows a difference in the magnitudes. \autoref{fig:mags} shows a downward trend. We tried fitting a one term Fourier model (a simple sine wave) but it is very hard to get the frequency without having at least two relative extrema.
+	Previous experiments done using the same telescope and SBIG CCD have shown that differential photometry can be accurate to around \SI{0.01}{mag}. Because our expected magnitude range is \SI{0.08}{mag} we wanted to be sure a difference could be seen. Another important factor is having reliable reference stars in the same frame as the target star to enable differential photometry. To accomplish this, we need to use a focal length extender which effectively doubles our field of view (halves our magnification). We can then capture two reference stars, HD 235411 and HD 200017 in each frame, shown in \autoref{fig:map}.
+	
+	To showcase the precision we have already taken a preliminary dataset that shows a difference in the magnitudes. Each of the images was taken with a \SI{15}{\second} exposure and a \SI{10}{\second} break to allow manual repositioning if needed. This proved to be an effective method because over 90\% of our practice images turned out sharp of the 100 we took.
+	
+	With theses images, we were able to see a clear difference over time for our variable star. \autoref{fig:mags} shows a downward trend. We tried fitting a one term Fourier model (a simple sine wave) but it is very hard to get the frequency without having at least two relative extrema.
 
-	\begin{figure}[p]
-		\includegraphics[width=\linewidth]{figs/mags.png}
-		\caption{}
-		\label{fig:mags}
-	\end{figure}
-
+	
 \section{Analysis Plan}
 
 	The analysis pipeline will require processing approximately 600 images. This will require efficient programs, like AstroImageJ, which allow calculations on large image sequences. Using AstroImageJ we can dark subtract every image and perform differential photometry. 
@@ -66,7 +48,59 @@
 
 
 %\bibliography{proposal}
-%\bibliographystyle{alpha}
+%\bibliographystyle{plain}
+
+\section*{Acknowledgements}
+
+
+\appendix
+\section{Tables and Figures}
+
+\begin{figure*}[h]
+	\centering
+	\begin{subfigure}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figs/dss_map.png}
+		\caption{DSS Image\footnotemark}
+	\end{subfigure}
+	\qquad
+	\begin{subfigure}[t]{.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figs/map.png}
+		\caption{Our image with pixel scale \numrange{200}{400}}
+	\end{subfigure}
+	\caption{Images showing the location of our target and reference stars using DSS and from Zaffarano Observing Deck}
+\end{figure*}
+\footnotetext{The Second Palomar Observatory Sky Survey (POSS-II) was made by the California Institute of Technology with funds from the National Science Foundation, the National Geographic Society, the Sloan Foundation, the Samuel Oschin Foundation, and the Eastman Kodak Corporation.}
+
+
+
+\begin{table}[h]
+	\centering
+	\caption{Information about target and reference stars}
+	\begin{tabular}{rrrrrr}
+		\hline
+		Object & Type &            RA &                DEC &                      V &                        Ref \\ \hline\hline
+		Dq Cep &  *dS & 20 57 48.6082 & \ang{55;29;15.602} & \SIrange{7.40}{7.48}{} & \cite{1971GCVS3.C......0K} \\
+		HD 235411 &    * & 20 57 31.1094 & \ang{55;31;38.697} &     \SI{9.76\pm0.03}{} &  \cite{2000AA...355L..27H} \\
+		HD 200017 &    * & 20 58 27.2026 & \ang{55;39;00.459} &     \SI{8.20\pm0.01}{} &  \cite{2000AA...355L..27H} \\ \hline
+	\end{tabular}
+	\label{tab:info}
+\end{table}
+
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{figs/staralt.png}
+	\caption{Output from Peter Sorensen's Object Visibility applet. Peek is around 20:00:00 CST and is still sufficiently high four hours later at 24:00:00 CST}
+	\label{fig:staralt}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=\linewidth]{figs/mags.png}
+	\caption{The magnitude for Dq Cep over a 45 minute period (100 images) shows a clear change in magnitude}
+	\label{fig:mags}
+\end{figure}
+
 
 
 \end{document}
