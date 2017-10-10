@@ -3,7 +3,13 @@ imscale.py
 
 Author: Miles Lucas
 
-This script parses the image scales of given images and reports a confidence interval. The images are expected to have been coordinate-mapped using koords so that the FITS headers match the keywords
+This script parses the image scales of given images and reports a confidence interval. The images are expected to
+have been coordinate-mapped using koords so that the FITS headers match the keywords
+
+Usage:
+$ python src/imscale.py data/science/processed/wcs
+Pixel Scale Axis 1: 1.1646511831490212+-0.026936667803169074
+Pixel Scale Axis 2: 1.1646511831490212+-0.026936667803169074
 '''
 
 import numpy as np
@@ -31,7 +37,6 @@ def main(filenames):
     key1, key2 = 'CDELT1', 'CDELT2'
     cdelt1 = [hdr[key1] for hdr in hdrs]
     cdelt2 = [hdr[key2] for hdr in hdrs]
-    print(cdelt1, cdelt2)
     # Get and print the intervals
     inter1 = get_interval(cdelt1)
     inter2 = get_interval(cdelt2)

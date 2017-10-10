@@ -75,7 +75,7 @@ floatfix
 %	Describe your telescope and camera setup. For the first lab you should describe the setup in more details. Subsequent labs can refer to the procedure described in the first lab, and focus more on the data acquisition itself. Important details to write include: which stars have been observed, which filters were used (BVI), what exposure times and what calibration procedures have been followed (e.g., dark frames acquisition, photometric standards observed, etc.). Mention also the observing conditions (weather, moon presence, temperature, etc.). You should include the observing log appendix A (a table or a scan of a hardcopy). This section can be as long as necessary, but you should strive for brevity (you can refer to the lab guide to avoid repeating all steps, but make sure you explain anything you did differently, problems encountered, etc.). Use tables to summarize information clearly.
 
 	\section{Data Acquisition and Setup}
-	Observations were made on \date{06 September 2017} at the Zaffarano Hall observation deck in Ames, Iowa (\ang{-93.64734}, \ang{42.02996}, \SI{342}{\meter}). The night was mostly clear and the ambient temperature was around \SI{12}{\degreeCelsius}. The moon was full that night which caused higher than usual lunar presence. Observations were made using a Meade 8" reflector telescope with an SBIG ST-402ME CCD camera with internal V, B, and I filters. 
+	Observations were made on \date{06 September 2017} at the Zaffarano Hall observation deck in Ames, Iowa (\ang{-93.64734}, \ang{42.02996}, \SI{342}{\meter}). The night was mostly clear and the ambient temperature was around \SI{12}{\degreeCelsius}. The moon was waning that night and had little to no effect on our sight. Observations were made using a Meade 8" reflector telescope with an SBIG ST-402ME CCD camera with internal V, B, and I filters. 
 	
 	Setting up the telescope was the same as previous observations made with the 8" Meade telescope at Zaffarano Hall.
 
@@ -84,6 +84,20 @@ floatfix
 %Describe what you did to analyze the data. For the first lab this section will be minimal. For subsequent labs you should describe in detail the steps you did to analyze the data.  If applicable you can attach the code you used to analyze the data in Appendix B (either a log of your IDL section, or the code of any scripts you wrote). You can also attach screenshots of your computer session if it helps your discussion. Include tables of raw data in this section. The goal of this section is to describe unambiguously what you did to derive your final images and measured quantities from the raw data. Again be brief but complete (use as much space as you need).
 	\section{Data Analysis}
 	
+	\begin{figure*}[t]
+		\centering
+		\begin{subfigure}[]{.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figs/dss.pdf}
+		\end{subfigure}
+		\qquad
+		\begin{subfigure}[]{.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figs/rgb.pdf}
+		\end{subfigure}
+		\caption{Images showing the location of our target and reference stars using DSS and from Zaffarano Observing Deck}
+		\label{fig:map}
+	\end{figure*}
 
 %________________________________________________________________________
 
@@ -121,23 +135,19 @@ floatfix
 	\end{table}
 	
 	
+	
+
+	
+
+	\section{Catalog Analysis}
+
 	\begin{figure}[H]
-		\centering
-		\begin{subfigure}[]{.45\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figs/dss.pdf}
-		\end{subfigure}
-		\qquad
-		\begin{subfigure}[]{.45\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figs/rgb.pdf}
-		\end{subfigure}
-		\caption{Images showing the location of our target and reference stars using DSS and from Zaffarano Observing Deck}
-		\label{fig:map}
+		\includegraphics[]{figs/map.pdf}
 	\end{figure}
 
-	\begin{figure}
-		\includegraphics[width=\textwidth]{figs/map.pdf}
-	\end{figure}
+	\section{Analysis Scripts}
+	\lstinputlisting[label={lst:measurement}]{../src/imscale.py}
+	
+	
 
 \end{document}
