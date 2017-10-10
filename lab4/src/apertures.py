@@ -47,4 +47,3 @@ width = 3.404 * 2
 height = width * .9
 plt.gcf().set_size_inches(width, height)
 plt.savefig('docs/figs/map.pdf', transparent=True)
-plt.show()
