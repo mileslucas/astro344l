@@ -1,4 +1,5 @@
 \documentclass[]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{siunitx}
 \usepackage{hyperref}
 \usepackage{float}
@@ -24,12 +25,16 @@
 \section{IRAS Sources around KR 140}
 
 Output table from ds9 searching around $ 2^h 20^m 12.589^s $ \ang{+61;06;03.255} within a \SI{15}{\arcminute} rectangle filtered for IRAS sources.
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=rrl, 
+	table head=\hline RA ($\deg$) & DEC ($\deg$) & Main ID \\ \hline\hline, 
+	table foot=\hline]
+	{../data/iras.csv}{}{\csvcoliv & \csvcolv & \csvcoliii}
+	\label{tab:iras}
+\end{table}
 
-\csvreader[
-centered tabular=rrl, 
-table head=\hline RA ($\deg$) & DEC ($\deg$) & Main ID \\ \hline\hline, 
-table foot=\hline]
-{../data/iras.csv}{}{\csvcoliv & \csvcolv & \csvcoliii}
 
 The IDs of these sources were then used in a VizieR query of the IRAS catalogue of Point Sources, Version 2.0 (IPAC 1986).
 
@@ -57,12 +62,16 @@ The IDs of these sources were then used in a VizieR query of the IRAS catalogue 
 \end{lstlisting}
 
 From this query the following table was created. Note the errors are whole number percentage errors (ie 25 means 25\% error on the given measurement)
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=llrrrrrrrrrr, 
+	table head=\hline IRAS & $F_{\nu,12}$ & $\epsilon_{F_{\nu,12}}$ & $F_{\nu,25}$ & $\epsilon_{F_{\nu,25}}$ & $F_{\nu,60}$ & $\epsilon_{F_{\nu,60}}$ &  $F_{\nu,100}$ & $\epsilon_{F_{\nu,100}}$ \\ \hline\hline, 
+	table foot=\hline]
+	{../data/result.csv}{}{\csvcoli & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii & \csvcolviii & \csvcolix & \csvcolx & \csvcolxi}
+	\label{tab:iras-result}
+\end{table}
 
-\csvreader[
-centered tabular=llrrrrrrrrrr, 
-table head=\hline IRAS & $F_{\nu,12}$ & $\epsilon_{F_{\nu,12}}$ & $F_{\nu,25}$ & $\epsilon_{F_{\nu,25}}$ & $F_{\nu,60}$ & $\epsilon_{F_{\nu,60}}$ &  $F_{\nu,100}$ & $\epsilon_{F_{\nu,100}}$ \\ \hline\hline, 
-table foot=\hline]
-{../data/result.csv}{}{\csvcoli & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii & \csvcolviii & \csvcolix & \csvcolx & \csvcolxi}
 
 From these values I created a color plot, where 
 
@@ -82,7 +91,7 @@ y = \log_{10}{\frac{F_{\nu, 25}}{F_{\nu, 12}}}
 \sigma_y = \frac{1}{100 \ln{10}}\sqrt{\epsilon_{F_{\nu,25}}^2 + \epsilon_{F_{\nu,12}}^2}
 \end{equation}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[]{figs/colors.pdf}
 \end{figure}
@@ -94,7 +103,7 @@ L=4\pi D^2 F
 \label{eqn:lum}
 \end{equation}
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[]{figs/spectrum.pdf}
 \end{figure}
@@ -106,12 +115,32 @@ In the submm photo there is a clump around $i=+133.436, b=-0.022$ that does not 
 
 \section{A 2MASS View of an IRAS Source}
 
-\csvreader[
-centered tabular=lllrrrrrr, 
-table head=\hline RA & DEC & 2MASS & J & $\epsilon_J$ & H & $\epsilon_H$ & K & $\epsilon_K$ \\ \hline\hline, 
-table foot=\hline]
-{../data/2mass.csv}{}{\csvlinetotablerow}
+From the 2MASS image server, I found a list of point sources within \SI{1}{\arcminute} of $i=+133.16, b=0.040$ shown in \autoref{tab:2mass}. Using intrinsic values from \autoref{tab:intrin}, I plotted the color ratios shown in \autoref{fig:intrin}.
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=lllrrrrrr, 
+	table head=\hline RA & DEC & 2MASS & J & $\epsilon_J$ & H & $\epsilon_H$ & K & $\epsilon_K$ \\ \hline\hline, 
+	table foot=\hline]
+	{../data/2mass.csv}{}{\csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii & \csvcolviii & \csvcolix & \csvcolx & \csvcolxi}
+	\label{tab:2mass}
+\end{table}
 
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=lrrrrr, 
+	table head=\hline Sp. & V-K & J-K & H-K & K-L & K-M \\ \hline\hline, 
+	table foot=\hline]
+	{../data/intrinsic.csv}{}{\csvlinetotablerow}
+	\label{tab:intrin}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{figs/intrinsic.pdf}
+	\label{fig:intrin}
+\end{figure}
 
 \section{Identifying YSOs using 2MASS Data}
 
