@@ -27,6 +27,7 @@
 Output table from ds9 searching around $ 2^h 20^m 12.589^s $ \ang{+61;06;03.255} within a \SI{15}{\arcminute} rectangle filtered for IRAS sources.
 \begin{table}[H]
 	\centering
+	\caption{IRAS point sources}
 	\csvreader[
 	tabular=rrl, 
 	table head=\hline RA ($\deg$) & DEC ($\deg$) & Main ID \\ \hline\hline, 
@@ -64,6 +65,7 @@ The IDs of these sources were then used in a VizieR query of the IRAS catalogue 
 From this query the following table was created. Note the errors are whole number percentage errors (ie 25 means 25\% error on the given measurement)
 \begin{table}[H]
 	\centering
+	\caption{IRAS source fluxes}
 	\csvreader[
 	tabular=llrrrrrrrrrr, 
 	table head=\hline IRAS & $F_{\nu,12}$ & $\epsilon_{F_{\nu,12}}$ & $F_{\nu,25}$ & $\epsilon_{F_{\nu,25}}$ & $F_{\nu,60}$ & $\epsilon_{F_{\nu,60}}$ &  $F_{\nu,100}$ & $\epsilon_{F_{\nu,100}}$ \\ \hline\hline, 
@@ -94,9 +96,11 @@ y = \log_{10}{\frac{F_{\nu, 25}}{F_{\nu, 12}}}
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{figs/colors.pdf}
+	\caption{Color ratio plot of IRAS sources in the HII clump}
+	\label{fig:colors}
 \end{figure}
 
-I also made a spectrum plot shown in . Using this, I integrated to find the total infrared flux to be \SI{239}{\jansky}. Using this and an assumed distance of \SI{2.3}{\kilo\pc} I can estimate the integrated flux over the whole star and find its luminosity using \autoref{eqn:lum}. The luminosity I have estimated is \SI{7.50e18}{\watt} or \SI{1.95e-8}{\solarlum}
+I also made a spectrum plot shown in . Using this, I integrated to find the total infrared flux to be \SI{239}{\jansky}. Using this and an assumed distance of \SI{2.3}{\kilo\pc} I can estimate the integrated flux over the whole star and find its luminosity using \autoref{eqn:lum}. I integrated the data using Simpson's rule (quadratic interpolation) and the luminosity I have estimated is \SI{7.50e18}{\watt} or \SI{1.95e-8}{\solarlum}
 
 \begin{equation}
 L=4\pi D^2 F
@@ -106,6 +110,8 @@ L=4\pi D^2 F
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{figs/spectrum.pdf}
+	\caption{Spectral energy density of IRAS 02157+6053}
+	\label{fig:spectrum}
 \end{figure}
 
 
@@ -118,6 +124,7 @@ In the submm photo there is a clump around $i=+133.436, b=-0.022$ that does not 
 From the 2MASS image server, I found a list of point sources within \SI{1}{\arcminute} of $i=+133.16, b=0.040$ shown in \autoref{tab:2mass}. Using intrinsic values from \autoref{tab:intrin}, I plotted the color ratios shown in \autoref{fig:intrin}.
 \begin{table}[H]
 	\centering
+	\caption{2MASS source data around $i=+133.16, b=0.040$}
 	\csvreader[
 	tabular=lllrrrrrr, 
 	table head=\hline RA & DEC & 2MASS & J & $\epsilon_J$ & H & $\epsilon_H$ & K & $\epsilon_K$ \\ \hline\hline, 
@@ -128,6 +135,7 @@ From the 2MASS image server, I found a list of point sources within \SI{1}{\arcm
 
 \begin{table}[H]
 	\centering
+	\caption{Intrinsic color data from Koornneef (1983)}
 	\csvreader[
 	tabular=lrrrrr, 
 	table head=\hline Sp. & V-K & J-K & H-K & K-L & K-M \\ \hline\hline, 
@@ -136,13 +144,19 @@ From the 2MASS image server, I found a list of point sources within \SI{1}{\arcm
 	\label{tab:intrin}
 \end{table}
 
+\section{Identifying YSOs using 2MASS Data}
+
+From \autoref{fig:intrin} we can try to characterize the types of stars present. Consider interstellar reddening- the effect of the medium will shift the intensities of the J, H, and K bands. Shown on the plot, extinction accounts for the stars that appear in the same path of the intrinsic curve but at a different location.
+
+There are still stars that do not follow under this simple guise, which are even redder. We can hypothesize that these stars have some sort of dust or debris cloud around the object itself causing extra reddening. These stars are good candidates for young stellar objects (YSO) and are marked in \autoref{fig:intrin}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{figs/intrinsic.pdf}
+	\caption{Intrinsic colors compared to 2MASS data shows how most of the stars are simply affected by reddening along the plot's diagonal, but a few objects are given extra reddening and appear off this linear axis. These objects are marked and are potential candidates for YSO}
 	\label{fig:intrin}
 \end{figure}
 
-\section{Identifying YSOs using 2MASS Data}
 
 
 \end{document}
