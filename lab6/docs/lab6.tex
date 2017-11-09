@@ -93,6 +93,8 @@ y = \log_{10}{\frac{F_{\nu, 25}}{F_{\nu, 12}}}
 \sigma_y = \frac{1}{100 \ln{10}}\sqrt{\epsilon_{F_{\nu,25}}^2 + \epsilon_{F_{\nu,12}}^2}
 \end{equation}
 
+In this plot, there is some clustering around $log_10{F_{60}/F_{100}}$ with IRAS 02165+6053 being an outlier.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[]{figs/colors.pdf}
@@ -100,7 +102,7 @@ y = \log_{10}{\frac{F_{\nu, 25}}{F_{\nu, 12}}}
 	\label{fig:colors}
 \end{figure}
 
-I also made a spectrum plot shown in . Using this, I integrated to find the total infrared flux to be \SI{239}{\jansky}. Using this and an assumed distance of \SI{2.3}{\kilo\pc} I can estimate the integrated flux over the whole star and find its luminosity using \autoref{eqn:lum}. I integrated the data using Simpson's rule (quadratic interpolation) and the luminosity I have estimated is \SI{7.50e18}{\watt} or \SI{1.95e-8}{\solarlum}
+I also made a spectral energy density plot shown in \autoref{fig:spectrum}. Using this, I integrated using Simpson's rule (quadratic interpolation) to find the total infrared flux to be \SI{239}{\jansky}. Using this and an assumed distance of \SI{2.3}{\kilo\pc} I can estimate the integrated flux over the whole star and find its luminosity using \autoref{eqn:lum}. The luminosity I have estimated is \SI{7.50e18}{\watt} or \SI{1.95e-8}{\solarlum}
 
 \begin{equation}
 L=4\pi D^2 F
