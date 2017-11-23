@@ -84,14 +84,37 @@ nofootinbib
 	
 	Our data analysis pipeline has two major parts. The first is the differential photometry of all 583 frames and the second is using a Lomb-Scargle periodogram to determine the optimal period for fit. 
 	
-	For differential photometry we used AstroImageJ due to its ability to process large stacks of images. We used multi-aperture mode and set the reference magnitudes according to \autoref{tab:info}.
+	For differential photometry we used AstroImageJ (AIJ) due to its ability to process large stacks of images. We used multi-aperture mode and set the reference magnitudes according to \autoref{tab:info}. We tried using the automatic mode that would use image analysis to place the apertures on every frame, but since the position of the stars is changing in every frame, the automatic processing failed. That left us with one-click mode where, after placing initial apertures, we could move through each frame and click on the same reference point to place all apertures. 
+	
+	For our apertures, we used the same for each object, with circular inner aperture with radius 10 pixels and outer sky annulus with inner radius 15 pixels and outer radius 25 pixels. In AIJ we could set the multi-aperture photometry to reference the image header for the electron gain, which was nice. The algorithm AIJ uses is a sky-median subtraction, which takes the median value of the sky annulus times the area and subtracts it from the integrated aperture sum of the target.
+	
+	We ended up with two results tables for each observation date, which we concatenated together into one large CSV table which is stored at \href{https://github.com/mileslucas/astro344l/blob/master/project/data/full_data.csv}{this github page}.
+	
+	For determining the optimal period, we used Astropy's Lomb-Scargle methods for fitting and modeling our data. We modeled using a single term Fourier series (sine wave) and allowed the package to automatically parameterize the FFT. We wrapped this method with Pandas DataFrames to read our CSV table and using matplotlib to present our data. All of the analysis was done in a jupyter notebook at \href{https://github.com/mileslucas/astro344l/blob/master/project/src/project.ipynb}{this github page}.
 
 
 %________________________________________________________________________
 	
 %	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
 	\section{Results}
-	 
+	 \begin{figure}
+	 	\centering
+	 	\includegraphics[width=\columnwidth]{figs/rawmags.pdf}
+	 	\caption{Photometry results for both observation nights}
+	 	\label{fig:raw}
+	 \end{figure}
+	 \begin{figure}
+	 	\centering
+	 	\includegraphics[width=\columnwidth]{figs/power.pdf}
+	 	\caption{Lomb-Scargle Periodogram. Peak is around \SI{0.09}{\per \minute}}
+	 	\label{fig:power}
+	 \end{figure}
+ 	\begin{figure}
+ 		\centering
+ 		\includegraphics[width=\columnwidth]{figs/fit.pdf}
+ 		\caption{Folded data with single-term Fourier series fit based on best frequency from Lomb-Scargle Periodogram}
+ 		\label{fig:fit}
+ 	\end{figure}
 	
 %________________________________________________________________________
 	
@@ -130,7 +153,7 @@ nofootinbib
 	
 	\section{Analysis Scripts}
 	
-	
+	Please reference the jupyter notebook at \href{https://github.com/mileslucas/astro344l/blob/master/project/src/project.ipynb}{this github page}.
 \end{document}
 %
 % ****** End of file aipsamp.tex ******
