@@ -1,0 +1,136 @@
+\documentclass[%
+aip,
+jmp,
+reprint,
+floatfix,
+nofootinbib
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\usepackage[utf8]{inputenc}
+\usepackage{ gensymb }
+
+\mathchardef\mhyphen="2D
+
+\renewcommand{\arraystretch}{1.3} % Changes the height of tables
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\day{d}
+
+
+
+\begin{document}
+	
+	\title[Short title]{Title}
+	
+	\author{Lucas, Miles}
+	\author{Brandon, John}
+	\affiliation{Iowa State University}
+	
+	\date{\today}
+	
+	
+% Write here a short abstract (1 paragraph) describing what you achieved in this lab.
+
+	\begin{abstract}
+	
+		
+	\end{abstract}
+	
+	\maketitle
+%________________________________________________________________________
+	
+%	Write here a summary of the goals of this lab. Be brief – do not exceed the end of the first page.
+
+	\section{Introduction}
+	
+	
+	\begin{table*}[t]
+		\centering
+		\label{tab:info}
+		\include{tables/ref}
+	\end{table*}
+	
+%________________________________________________________________________	
+
+%	Describe your telescope and camera setup. For the first lab you should describe the setup in more details. Subsequent labs can refer to the procedure described in the first lab, and focus more on the data acquisition itself. Important details to write include: which stars have been observed, which filters were used (BVI), what exposure times and what calibration procedures have been followed (e.g., dark frames acquisition, photometric standards observed, etc.). Mention also the observing conditions (weather, moon presence, temperature, etc.). You should include the observing log appendix A (a table or a scan of a hardcopy). This section can be as long as necessary, but you should strive for brevity (you can refer to the lab guide to avoid repeating all steps, but make sure you explain anything you did differently, problems encountered, etc.). Use tables to summarize information clearly.
+
+	\section{Data Acquisition and Setup}
+	Observations were made on \date{27 September 2017} and \date{18 October 2017} at the Zaffarano Hall observation deck in Ames, Iowa (\ang{-93.64734}, \ang{42.02996}, \SI{342}{\meter}). Both nights had clear viewing and the ambient temperature was around \SI{13}{\degreeCelsius} for the first viewing and \SIrange{16}{4}{\degreeCelsius}. The moon had little to no effect on our sight either night due to the target position being \ang{107} away. Observations were made using a Meade 8" reflector telescope with a 2x focal length extender and an SBIG ST-402ME CCD camera with internal V, B, and I filters. 
+	
+	Setting up the telescope was the same as previous observations made with the 8" Meade telescope at Zaffarano Hall. \date{27 September 2017} was the trial night to determine whether DQ Cep would be visible and if the difference in magnitude could be seen. 
+	
+	A lot of time was spent locating the star of interest and orienting the camera. The method we found best for use with our specific Meade telescope was to slew to SAO 33047 and refernce a star chart to see where it sits in relation to DQ Cep and also SAO 33050. Now, slew to SAO 33050 and notice which direction the telescope slews. This will define polar axis in relation to the star chart. Then, we found similar triangle and were able to orient ourselves correctly on both axes compared to the star chart and then slewed to DQ Cep. Using the focal length extender was necessary to get both of our reference stars in the frame. This also depends on the orientation of the CCD, so we made sure to rotate the CCD on the mount so that all stars are in the image. 
+	
+	After focusing and determining our exposure time, we took 100 frames with \SI{15}{\second} exposures and a \SI{10}{\second} pause in between each frame. This pause is vital to allow realigning as the stars and mount fall out of alignment as the Earth rotates. In general we noticed about every 10 frames a small movement was necessary to keep all sources fully in frame.
+	
+	The observations on \date{18 October 2017} were meant to gather as much data as possible. With a previously stated period of \SI{.0789}{\day} (\SI{1.89}{\hour}) \cite{1971GCVS3.C......0K}, we sought to get data over two full periods, so four hours of observations. One of us started observations around 8:00 pm and started taking 500 frames. At 10:00 pm we switched observers and ran until the end of the night. In all we gathered 483 science frames and 5 dark frames.
+	
+	
+	
+%________________________________________________________________________
+
+%Describe what you did to analyze the data. For the first lab this section will be minimal. For subsequent labs you should describe in detail the steps you did to analyze the data.  If applicable you can attach the code you used to analyze the data in Appendix B (either a log of your IDL section, or the code of any scripts you wrote). You can also attach screenshots of your computer session if it helps your discussion. Include tables of raw data in this section. The goal of this section is to describe unambiguously what you did to derive your final images and measured quantities from the raw data. Again be brief but complete (use as much space as you need).
+	\section{Data Analysis}
+	
+	Our data analysis pipeline has two major parts. The first is the differential photometry of all 583 frames and the second is using a Lomb-Scargle periodogram to determine the optimal period for fit. 
+	
+	For differential photometry we used AstroImageJ due to its ability to process large stacks of images. We used multi-aperture mode and set the reference magnitudes according to \autoref{tab:info}.
+
+
+%________________________________________________________________________
+	
+%	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
+	\section{Results}
+	 
+	
+%________________________________________________________________________
+	
+%	Add here anything else you want to say, and summarize your results. This section should be very brief, not more than a couple of paragraphs
+	\section{Conclusions}
+	
+	
+%________________________________________________________________________
+	
+	\section*{Acknowledgements}
+	
+	Thank you to Dr. Charles Kerton and Brandon Marshall for their guidance and assistance in this work.
+	
+	\medskip
+	\bibliography{refs}
+	
+	
+%________________________________________________________________________
+	
+	\onecolumngrid
+	\appendix
+	\section{Observation Log}
+
+	\begin{table}[h!]
+		\centering
+		\input{tables/log1}
+		\label{table:log1}
+	\end{table}
+
+	\begin{table}[h!]
+		\centering
+		\input{tables/log2}
+		\label{table:log2}
+	\end{table}
+%________________________________________________________________________
+	
+	\section{Analysis Scripts}
+	
+	
+\end{document}
+%
+% ****** End of file aipsamp.tex ******
