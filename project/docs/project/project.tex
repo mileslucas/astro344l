@@ -42,7 +42,7 @@ nofootinbib
 % Write here a short abstract (1 paragraph) describing what you achieved in this lab.
 
 	\begin{abstract}
-	We sought to characterize the light-curve of $\delta$-scuti star DQ Cephei in its fundamental mode. We took approximately five hours of images every 25 seconds during two different observation sessions in 2017. We performed differential photometry using HD 235411 \SI{9.76\pm.03}{V} and HD 200017 \SI{8.20\pm.01}{V} as references. We used a Lomb-Scargle periodogram with a one-term Fourier model for time-series analysis and determined the period of DQ Cep to be \SI{0.0789\pm.0022}{\day}. Using the same model we estimate the amplitude to be \SIrange{7.26}{7.30}{V} (\SI{.04}{mag}). However, the large variations in differential photometry results due to the limits of our telescope and CCD do not give much confidence to our amplitude estimates. 
+	We sought to characterize the light-curve of $\delta$-scuti star DQ Cephei in its fundamental mode. We took approximately five hours of images every 25 seconds during two different observation sessions in 2017. We performed differential photometry using HD 235411 \SI{9.76\pm.03}{V} and HD 200017 \SI{8.20\pm.01}{V} as references. We used a Lomb-Scargle periodogram with a one-term Fourier model for time-series analysis and determined the period of DQ Cep to be \SI{0.0789\pm.0022}{\day}. Using the same model we estimate the amplitude to be \SIrange{7.26\pm.20}{7.30\pm.20}{V} (\SI{.0367\pm.0010}{mag}). However, the large variations in differential photometry results due to the limits of our telescope and CCD do not give much confidence to our amplitude estimates. 
 		
 	\end{abstract}
 	
@@ -133,7 +133,7 @@ nofootinbib
 	
 	The differential photometry yielded the magnitudes, with errors, shown in \autoref{fig:raw}. The plot is broken to show both observation nights easily side by side. The time is referenced as the time since the first image was taken. 
 	
-	The Lomb-Scargle periodogram is shown in \autoref{fig:power}. We can see a clear peak around \SI{0.528\pm .015}{\per \hour}. This corresponds to a period of \SI{1.892\pm.053}{\hour} or \SI{0.0789\pm.0022}{\day}. We use this to fold all of our data and use Astropy's single-term model to show the fit in \autoref{fig:fit}. From this model, we can say the magnitude range for DQ Cep is \SIrange{7.26}{7.30}{mag} (\SI{.04}{mag}), while the raw data has a range of \SIrange{7.24}{7.33}{mag} (\SI{.09}{mag}).
+	The Lomb-Scargle periodogram is shown in \autoref{fig:power}. We can see a clear peak around \SI{0.528\pm .015}{\per \hour}. This corresponds to a period of \SI{1.892\pm.053}{\hour} or \SI{0.0789\pm.0022}{\day}. We use this to fold all of our data and use Astropy's single-term model to show the fit in \autoref{fig:fit}. From this model, we can say the magnitude range for DQ Cep is \SIrange{7.26\pm.20}{7.30\pm.20}{mag} (\SI{.0367\pm.0010}{mag}), while the raw data has a range of \SIrange{7.24}{7.33}{mag} (\SI{.09}{mag}).
 	 \begin{figure}[t]
 	 	\centering
 	 	\includegraphics[width=\linewidth]{figs/rawmags.pdf}

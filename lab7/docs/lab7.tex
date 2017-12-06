@@ -53,7 +53,7 @@ floatfix,
 % Write here a short abstract (1 paragraph) describing what you achieved in this lab.
 
 	\begin{abstract}
-	
+	This report seeks to characterize the rotational period of the Sun. We used \SI{6173}{\angstrom} SDO data and measured the pixel location of sunspots over a range of time from \date{2014 October 20} to \date{2014 October 29}. This data is fit using a linear regression. From the fit I calculated the synodic period to be \SI{26.181 \pm .059}{\day} and the sidereal period to be \SI{24.430 \pm .051}{\day}.
 	\end{abstract}
 
 	\maketitle
@@ -79,10 +79,10 @@ floatfix,
 	
 	This function can be easily fit with a linear regression and the reported synodic frequency, in \si{\per \day}, can be given as 
 	\begin{equation}
-	\omega_0 = \omega \pm \omega \cdot S
+	\omega = \hat{\omega} \pm \hat{\omega} \cdot S
 	\label{eqn:err}
 	\end{equation}
-	where $S$ is the standard error of the fit.
+	where $\hat{\omega}$ is the estimator for the slope and $S$ is the standard error of the fit.
 	
 	Also, to account for the motion of the Earth around the sun, we use the simple relation
 	\begin{equation}
@@ -110,14 +110,15 @@ floatfix,
 		\begin{subfigure}[]{.4\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figs/20141021.png}
-			\caption{\SI{6173}{\angstrom} image from 2014 October 21}
+			\caption{\SI{6173}{\angstrom} image from \date{2014 October 21}}
 		\end{subfigure}
 		\qquad
 		\begin{subfigure}[]{.4\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{figs/20141027.png}
-			\caption{\SI{6173}{\angstrom} image from 2014 October 27}
+			\caption{\SI{6173}{\angstrom} image from \date{2014 October 27}}
 		\end{subfigure}
+		\caption{Example pictures showing sunspot traced sunspot}
 		\label{fig:sun}
 	\end{figure*}
 %________________________________________________________________________
@@ -135,9 +136,9 @@ floatfix,
 %________________________________________________________________________
 
 %	Describe in detail the results you obtained from the quantitative analysis of your data, as explained in the lab guide.
-	\section{Results}
+	\section{Results and Discussion}
 	
-	The measurements from each image are listed in \autoref{tab:data}. The linear fit is shown in \autoref{fig:line}. The uncertainties were found using least squares propagation methods where the absolute uncertainty for the synodic frequency is shown in \autoref{eqn:err}. From this fit, I report the synodic period to be \SI{.011408 \pm .000026}{\year} and the sidereal period to be \SI{.011279 \pm .000025}{\year}
+	The measurements from each image are listed in \autoref{tab:data}. The linear fit is shown in \autoref{fig:line}. The uncertainties were found using least squares propagation methods where the absolute uncertainty for the synodic frequency is shown in \autoref{eqn:err}. From this fit, I report the synodic period to be \SI{26.181 \pm .059}{\day} and the sidereal period to be \SI{24.430 \pm .051}{\day}. This is of the same magnitude as the accepted values for solar rotation, where my errors arise from approximation in sunspot position, especially with the distortion as it approaches the limb.
 
 	\begin{table}
 		\centering
@@ -160,7 +161,7 @@ floatfix,
 %________________________________________________________________________
 
 %	Add here anything else you want to say, and summarize your results. This section should be very brief, not more than a couple of paragraphs
-	\section{Conclusions}
+%	\section{Conclusions}
 	
 
 
