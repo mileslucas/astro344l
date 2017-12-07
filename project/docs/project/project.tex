@@ -42,7 +42,7 @@ nofootinbib
 % Write here a short abstract (1 paragraph) describing what you achieved in this lab.
 
 	\begin{abstract}
-	We sought to characterize the light-curve of $\delta$-scuti star DQ Cephei in its fundamental mode. We took approximately five hours of images every 25 seconds during two different observation sessions in 2017. We performed differential photometry using HD 235411 \SI{9.76\pm.03}{V} and HD 200017 \SI{8.20\pm.01}{V} as references. We used a Lomb-Scargle periodogram with a one-term Fourier model for time-series analysis and determined the period of DQ Cep to be \SI{0.0789\pm.0022}{\day}. Using the same model we estimate the amplitude to be \SIrange{7.26\pm.20}{7.30\pm.20}{V} (\SI{.0367\pm.0010}{mag}). However, the large variations in differential photometry results due to the limits of our telescope and CCD do not give much confidence to our amplitude estimates. 
+	We sought to characterize the light-curve of $\delta$-scuti star DQ Cephei in its fundamental mode. We took approximately five hours of images every 25 seconds during two different observation sessions in 2017. We performed differential photometry using HD 235411 \SI{9.76\pm.03}{V} and HD 200017 \SI{8.20\pm.01}{V} as references. We used a Lomb-Scargle periodogram with a one-term Fourier model for time-series analysis and determined the period of DQ Cep to be \SI{0.0789\pm.0022}{\day}. Using the same model we estimate the amplitude to be \SIrange{7.26\pm.20}{7.30\pm.20}{V} ($\Delta$ = \SI{.0367\pm.0010}{mag}). However, due to the limits of our telescope and CCD, large variations in differential photometry results do not give much confidence to our amplitude estimates. 
 		
 	\end{abstract}
 	
@@ -55,7 +55,7 @@ nofootinbib
 	
 	The goal of this report is to characterize the light-curve of $\delta$-scuti star DQ Cephei. $\delta$-scuti stars are a subclass of cepheids and exist on the instability strip. The cause for the variations of cepheids are due to the change in temperature and radius. These changes are self-excited by the second ionization of helium \citep{1963ApJ...138..487C} which, when compressed, increased the opacity of the star. As opacity increases, the radiation energy is blocked by the opacity. This causes a pressure which pushes the outer layers back out. This cycle continues regularly, causing the fundamental mode of oscillation \citep{1935PASP...47..232F}. 
 	
-	DQ Cephei falls into the class of low-amplitude-$\delta$-scuti (LADS) which are classified with amplitude less than \SI{0.1}{mag}. These stars typically exhibit multivariability due to non-radial pulsation \citep{1937LicOB..18...77F, 1938ApJ....87..133S}. Another mode of pulsation are asymmetric surface instabilities. These overtones are usually quite hard to notice in comparison to the fundamental mode, with longer periods and even slighter amplitudes. High-amplitude-$\delta$-scuti (HADS) appear like small-period cepheids and are often termed as "dwarf-cepheids". In general, we expect these types of stars to behave similar to RR Lyrae variable stars. For more information on HADS seek \citet{1997PASP..109.1221M}. 
+	DQ Cephei falls into the class of low-amplitude-delta-scuti (LADS) which are classified with amplitude less than \SI{0.1}{mag}. These stars typically exhibit multivariability due to non-radial pulsation \citep{1937LicOB..18...77F, 1938ApJ....87..133S}. Another mode of pulsation are asymmetric surface instabilities. These overtones are usually quite hard to notice in comparison to the fundamental mode, with longer periods and even slighter amplitudes. High-amplitude-$\delta$-scuti (HADS) appear like small-period cepheids and are often termed as "dwarf-cepheids". In general, we expect these types of stars to behave similar to RR Lyrae variable stars. For more information on HADS seek \citet{1997PASP..109.1221M}. 
 	
 	The significance of finding the period from the light-curve of this star is to test the limits of our physical setup and to offer more data for the period-luminosity relationship of $delta$-scuti types.
 	
@@ -112,9 +112,9 @@ nofootinbib
 	\begin{equation}
 	P_X(f) = \frac{\chi^2_{ref} - \chi^2(f)}{\chi^2_{ref}}
 	\end{equation}
-	this value is limited to $0<=P_X<=1$. What this means is that the highest power frequency will create a model that minimizes in a weighted-least-squares fashion the residuals between the model and the data. So, as we find our best period, we can find the confidence interval using the standard error of the best fit model ($Y_i$) to the data ($Y$).
+	this value is limited to $0<=P_X<=1$. What this means is that the highest power frequency will create a model that minimizes in a weighted-least-squares fashion the residuals between the model and the data. So, as we find our best period, we can find the confidence interval using the standard error of the best fit model ($Y^*$) to the data ($Y$).
 	\begin{equation}
-	s = \cdot\sqrt{\frac{\sum_i{(Y_i-Y)^2}}{N-2}}
+	s = \cdot\sqrt{\frac{\sum_i{(Y^*_i-Y_i)^2}}{N-2}}
 	\end{equation}
 	Using least-squares error propagation shows that the uncertainty of the period is
 	\begin{equation}
